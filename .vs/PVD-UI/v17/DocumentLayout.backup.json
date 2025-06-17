@@ -1,0 +1,107 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\source\\PVD-UI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|c:\\source\\pvd-ui\\pvd-ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|solutionrelative:pvd-ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|c:\\source\\pvd-ui\\pvd-ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|solutionrelative:pvd-ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|c:\\source\\pvd-ui\\pvd-ui\\mainui.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|solutionrelative:pvd-ui\\mainui.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|c:\\source\\pvd-ui\\pvd-ui\\mainui.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|solutionrelative:pvd-ui\\mainui.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|c:\\source\\pvd-ui\\pvd-ui\\pvd-ui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{87FE804C-B606-4873-980A-A610CCD36954}|PVD-UI\\PVD-UI.csproj|solutionrelative:pvd-ui\\pvd-ui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainUI.xaml.cs",
+              "DocumentMoniker": "C:\\source\\PVD-UI\\PVD-UI\\MainUI.xaml.cs",
+              "RelativeDocumentMoniker": "PVD-UI\\MainUI.xaml.cs",
+              "ToolTip": "C:\\source\\PVD-UI\\PVD-UI\\MainUI.xaml.cs",
+              "RelativeToolTip": "PVD-UI\\MainUI.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T23:54:45.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PVD-UI",
+              "DocumentMoniker": "C:\\source\\PVD-UI\\PVD-UI\\PVD-UI.csproj",
+              "RelativeDocumentMoniker": "PVD-UI\\PVD-UI.csproj",
+              "ToolTip": "C:\\source\\PVD-UI\\PVD-UI\\PVD-UI.csproj",
+              "RelativeToolTip": "PVD-UI\\PVD-UI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-16T23:53:24.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\source\\PVD-UI\\PVD-UI\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "PVD-UI\\MainWindow.xaml",
+              "ToolTip": "C:\\source\\PVD-UI\\PVD-UI\\MainWindow.xaml",
+              "RelativeToolTip": "PVD-UI\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-16T23:53:03.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainUI.xaml",
+              "DocumentMoniker": "C:\\source\\PVD-UI\\PVD-UI\\MainUI.xaml",
+              "RelativeDocumentMoniker": "PVD-UI\\MainUI.xaml",
+              "ToolTip": "C:\\source\\PVD-UI\\PVD-UI\\MainUI.xaml",
+              "RelativeToolTip": "PVD-UI\\MainUI.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-16T23:53:01.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\source\\PVD-UI\\PVD-UI\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "PVD-UI\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\source\\PVD-UI\\PVD-UI\\MainWindow.xaml.cs",
+              "RelativeToolTip": "PVD-UI\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T23:49:50.589Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
