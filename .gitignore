@@ -1,7 +1,29 @@
-.vs/PVD-UI/CopilotIndices/17.14.698.11175/CodeChunks.db
-.vs/PVD-UI/CopilotIndices/17.14.698.11175/SemanticSymbols.db
-.vs/PVD-UI/DesignTimeBuild/.dtbcache.v2
-.vs/PVD-UI/FileContentIndex/362e3abb-e21b-4f07-b03c-73ae2ac1fab5.vsidx
-.vs/PVD-UI/FileContentIndex/950d7977-54c1-44b1-804a-bfb199e1e786.vsidx
-.vs/PVD-UI/FileContentIndex/3710d306-37a1-430d-b79c-d501acc9a5f7.vsidx
-.vs/PVD-UI/FileContentIndex/bc29d369-a424-4241-8314-1eca325f5cca.vsidx
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
