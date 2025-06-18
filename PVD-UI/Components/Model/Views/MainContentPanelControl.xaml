@@ -125,7 +125,10 @@
             <TextBlock Text="ROBOT ARM" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Row="1"/>
 
             <!-- 동적 노드들을 담을 컨테이너 -->
-            <ItemsControl x:Name="DiagramItemsControl" ItemTemplate="{StaticResource DiagramNodeTemplate}" Grid.RowSpan="2">
+            <ItemsControl x:Name="DiagramItemsControl" 
+                          ItemsSource="{Binding Nodes}" 
+                          ItemTemplate="{StaticResource DiagramNodeTemplate}" 
+                          Grid.RowSpan="2">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas Width="600" Height="600"/>

@@ -172,7 +172,7 @@
             <views:SidebarControl Grid.Column="0" />
 
             <!-- 2.2. 중앙 메인 패널 -->
-            <views:MainContentPanelControl Grid.Column="1" x:Name="MainContentPanel" />
+            <views:MainContentPanelControl Grid.Column="1" x:Name="MainContentPanel" DataContext="{Binding}" />
         </Grid>
 
         <!-- 3. 하단 탭 바 -->
