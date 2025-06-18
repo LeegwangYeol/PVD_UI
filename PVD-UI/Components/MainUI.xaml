@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:PVD_UI.Components"
-             xmlns:model="clr-namespace:PVD_UI.Components.Model.Layout"
+             xmlns:layout="clr-namespace:PVD_UI.Components.Model.Layout"
+             xmlns:views="clr-namespace:PVD_UI.Components.Model.Views"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280"
              Background="#1e1e1e"
@@ -158,7 +159,7 @@
         </Grid.RowDefinitions>
 
         <!-- 1. 헤더 -->
-        <model:HeaderControl Grid.Row="0" />
+        <layout:HeaderControl Grid.Row="0" />
 
         <!-- 2. 메인 콘텐츠 -->
         <Grid Grid.Row="1">
@@ -168,245 +169,13 @@
             </Grid.ColumnDefinitions>
 
             <!-- 2.1. 왼쪽 사이드바 -->
-            <Border Grid.Column="0" Background="#27272a" Padding="16">
-                <StackPanel>
-                    <!-- 제품명과 상태 -->
-                    <Grid Margin="0,0,0,20">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- 제품명 행 -->
-                        <TextBlock Text="제품명" Style="{StaticResource SidebarLabelStyle}" 
-                                 Grid.Row="0" Grid.Column="0"/>
-                        <TextBlock Text="XDKTI_B" Style="{StaticResource SidebarValueStyle}" 
-                                 Grid.Row="0" Grid.Column="1" Margin="8,0,0,0"/>
-
-                        <!-- 진행상황 행 -->
-                        <TextBlock Text="진행상황" Style="{StaticResource SidebarLabelStyle}" 
-                                 Grid.Row="1" Grid.Column="0" Margin="0,8,0,0"/>
-                        <TextBlock Text="STOP" Style="{StaticResource SidebarValueStyle}" 
-                                 Foreground="#ef4444" 
-                                 Grid.Row="1" Grid.Column="1" 
-                                 Margin="8,8,0,0"/>
-                    </Grid>
-
-                    <!-- 원형 진행률 -->
-                    <Viewbox Height="120" Margin="0,16">
-                        <Grid Width="120" Height="120">
-                            <Ellipse Width="120" Height="120" Stroke="#3f3f46" StrokeThickness="8"/>
-                            <Ellipse Width="120" Height="120" Stroke="#3b82f6" StrokeThickness="8"
-                                     StrokeDashArray="213 75" StrokeDashCap="Round" RenderTransformOrigin="0.5,0.5">
-                                <Ellipse.RenderTransform>
-                                    <RotateTransform Angle="-90"/>
-                                </Ellipse.RenderTransform>
-                            </Ellipse>
-                            <TextBlock Text="85%" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-                        </Grid>
-                    </Viewbox>
-
-                    <!-- 수량 정보 카드 -->
-                    <Border Style="{StaticResource CustomCard}" Margin="0,16,0,0">
-                        <UniformGrid Columns="3">
-                            <StackPanel HorizontalAlignment="Center">
-                                <TextBlock Text="지연수량" Style="{StaticResource SidebarLabelStyle}" HorizontalAlignment="Center"/>
-                                <TextBlock Text="74990" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Foreground="White"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Center">
-                                <TextBlock Text="진행수량" Style="{StaticResource SidebarLabelStyle}" HorizontalAlignment="Center"/>
-                                <TextBlock Text="25009" FontWeight="Bold" FontSize="16" Foreground="#3b82f6" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Center">
-                                <TextBlock Text="전체" Style="{StaticResource SidebarLabelStyle}" HorizontalAlignment="Center"/>
-                                <TextBlock Text="99999" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Foreground="White"/>
-                            </StackPanel>
-                        </UniformGrid>
-                    </Border>
-
-                    <!-- 상세 정보 카드들 -->
-                    <UniformGrid Columns="2" Margin="0,16">
-                        <Border Style="{StaticResource CustomCard}">
-                            <StackPanel>
-                                <TextBlock Text="SPM" Style="{StaticResource SidebarLabelStyle}"/>
-                                <TextBlock Text="2.7" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                                <TextBlock Text="EA/min" Style="{StaticResource SidebarLabelStyle}" FontSize="10"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Style="{StaticResource CustomCard}">
-                            <StackPanel>
-                                <TextBlock Text="평균 SPM" Style="{StaticResource SidebarLabelStyle}"/>
-                                <TextBlock Text="3.0" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                                <TextBlock Text="EA/min" Style="{StaticResource SidebarLabelStyle}" FontSize="10"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Style="{StaticResource CustomCard}">
-                            <StackPanel>
-                                <TextBlock Text="Cycle Time" Style="{StaticResource SidebarLabelStyle}"/>
-                                <TextBlock Text="82.19" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                                <TextBlock Text="Sec" Style="{StaticResource SidebarLabelStyle}" FontSize="10"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Style="{StaticResource CustomCard}">
-                            <StackPanel>
-                                <TextBlock Text="예상 작업 시간" Style="{StaticResource SidebarLabelStyle}"/>
-                                <TextBlock Text="5.10" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                                <TextBlock Text="Sec" Style="{StaticResource SidebarLabelStyle}" FontSize="10"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Style="{StaticResource CustomCard}">
-                            <StackPanel>
-                                <TextBlock Text="팔레트 완료 수량" Style="{StaticResource SidebarLabelStyle}"/>
-                                <TextBlock Text="550" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                            </StackPanel>
-                        </Border>
-                        <Border Style="{StaticResource CustomCard}">
-                            <StackPanel>
-                                <TextBlock Text="점검 사항" Style="{StaticResource SidebarLabelStyle}"/>
-                                <TextBlock Text="5.10" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                            </StackPanel>
-                        </Border>
-                    </UniformGrid>
-
-                    <!-- 점검사항 -->
-                    <Border Style="{StaticResource CustomCard}" Margin="0,16,0,0">
-                        <StackPanel>
-                            <TextBlock Text="점검사항" Style="{StaticResource SidebarLabelStyle}" Margin="0,0,0,8"/>
-                            <StackPanel>
-                                <CheckBox Content="안전장치 점검" IsChecked="True" Foreground="White" Margin="0,0,0,4"/>
-                                <CheckBox Content="로봇 팁 교체" IsChecked="True" Foreground="White" Margin="0,0,0,4"/>
-                                <CheckBox Content="공구 교체" IsChecked="False" Foreground="White" Margin="0,0,0,4"/>
-                                <CheckBox Content="청소 및 정리" IsChecked="False" Foreground="White" Margin="0,0,0,4"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-
-                    <!-- 제어 버튼들 -->
-                    <UniformGrid Columns="4" Margin="0,16,0,0" HorizontalAlignment="Stretch" Background="#3f3f46">
-                        <Button Style="{StaticResource CustomFlatButton}" ToolTip="원점복귀">
-                            <materialDesign:PackIcon Kind="Home" Width="24" Height="24" Foreground="White"/>
-                        </Button>
-                        <Button Style="{StaticResource CustomFlatButton}" ToolTip="시작">
-                            <materialDesign:PackIcon Kind="Play" Width="24" Height="24" Foreground="White"/>
-                        </Button>
-                        <Button Style="{StaticResource CustomFlatButton}" ToolTip="재시작">
-                            <materialDesign:PackIcon Kind="Restart" Width="24" Height="24" Foreground="White"/>
-                        </Button>
-                        <Button Style="{StaticResource CustomFlatButton}" ToolTip="정지">
-                            <materialDesign:PackIcon Kind="Stop" Width="24" Height="24" Foreground="White"/>
-                        </Button>
-                    </UniformGrid>
-                </StackPanel>
-            </Border>
+            <views:SidebarControl Grid.Column="0" />
 
             <!-- 2.2. 중앙 메인 패널 -->
-            <Grid Grid.Column="1" Margin="24" x:Name="MainContentPanel">
-                <!-- '뫼 산' 형태의 세련된 수직 막대 -->
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,208,0,0" RenderTransformOrigin="0.5,0.5">
-                    <Grid.RenderTransform>
-                        <RotateTransform Angle="-0.368"/>
-                    </Grid.RenderTransform>
-
-                    <!-- 수직 막대 -->
-                    <Rectangle Width="6" Height="640" Fill="#00FF00" VerticalAlignment="Top" RadiusX="3" RadiusY="3"/>
-
-                    <!-- 하단 받침대 (뫼 산 형태) -->
-                    <Path Data="M-15,630 L27,630 L6,660 Z" Fill="#00FF00" Stretch="Fill" Width="42" Height="30" VerticalAlignment="Top" Margin="-18,601,-18,0" RenderTransformOrigin="0.5,0">
-                        <Path.Effect>
-                            <DropShadowEffect BlurRadius="8" ShadowDepth="2" Direction="270" Opacity="0.3" Color="Black"/>
-                        </Path.Effect>
-                    </Path>
-
-                    <!-- 그라데이션 효과를 위한 오버레이 -->
-                    <Rectangle Width="6" Height="640" VerticalAlignment="Top">
-                        <Rectangle.Fill>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#00000000" Offset="0"/>
-                                <GradientStop Color="#00000000" Offset="0.8"/>
-                                <GradientStop Color="#20000000" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Grid>
-                <!-- 카메라 피드 플레이스홀더 -->
-                <Grid Margin="-4,0,4,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Border Grid.Row="0" Grid.Column="0" Background="#27272a" CornerRadius="8" Margin="54,2,6,104" BorderBrush="#00FF00" BorderThickness="2">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                            <TextBlock Text="Camera 1" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                        </StackPanel>
-                    </Border>
-                    <Border Grid.Row="0" Grid.Column="2" Background="#27272a" CornerRadius="8" Margin="57,-4,-4,104" BorderBrush="#00FF00" BorderThickness="2">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                            <TextBlock Text="Camera 2" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                        </StackPanel>
-                    </Border>
-                    <Border Grid.Row="2" Grid.Column="0" Background="#27272a" CornerRadius="8" Margin="67,106,29,0" BorderBrush="#00FF00" BorderThickness="2">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                            <TextBlock Text="Camera 3" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                        </StackPanel>
-                    </Border>
-                    <Border Grid.Row="2" Grid.Column="2" Background="#27272a" CornerRadius="8" Margin="42,96,6,0" BorderBrush="#00FF00" BorderThickness="2">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                            <TextBlock Text="Camera 4" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-
-                <!-- 중앙 다이어그램 (동적 배치) -->
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="206*"/>
-                        <RowDefinition Height="295*"/>
-                    </Grid.RowDefinitions>
-                    <!-- 외부 원 -->
-                    <!-- 외부 원 (가장 바깥쪽 노드 반지름 270 * 2 + 노드 지름 50 = 590) -->
-                    <Ellipse Width="590" Height="590" Stroke="#3f3f46" StrokeThickness="2" Opacity="1" Margin="5,5,5,5" Grid.RowSpan="2"/>
-                    <!-- 중간 원 (390x390으로 조정) -->
-                    <Ellipse Width="390" Height="390" Stroke="#3f3f46" StrokeThickness="2" Opacity="1" Margin="105,105,105,105" Grid.RowSpan="2"/>
-                    <!-- 내부 원 (가장 안쪽 노드 반지름 220 * 2 - 노드 지름 50 = 390) -->
-                    <Ellipse Width="90" Height="90" Fill="#3f3f46" Opacity="1" Margin="255,255,255,255" Grid.RowSpan="2"/>
-
-                    <!-- 중앙 텍스트 -->
-                    <TextBlock Text="ROBOT ARM" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Row="1"/>
-
-                    <!-- 동적 노드들을 담을 컨테이너 -->
-                    <ItemsControl x:Name="DiagramItemsControl" ItemTemplate="{StaticResource DiagramNodeTemplate}" Grid.RowSpan="2">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <Canvas Width="600" Height="600"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemContainerStyle>
-                            <Style TargetType="ContentPresenter">
-                                <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                                <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                            </Style>
-                        </ItemsControl.ItemContainerStyle>
-                    </ItemsControl>
-                </Grid>
-            </Grid>
+            <views:MainContentPanelControl Grid.Column="1" x:Name="MainContentPanel" />
         </Grid>
 
         <!-- 3. 하단 탭 바 -->
-        <model:TabBarControl Grid.Row="2" />
+        <layout:TabBarControl Grid.Row="2" />
     </Grid>
 </UserControl>
