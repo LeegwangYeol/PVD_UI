@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="Components\Model\Layout\" />
-    <Folder Include="Components\Model\Views\" />
   </ItemGroup>
 
 </Project>
