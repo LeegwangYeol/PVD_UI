@@ -68,7 +68,7 @@ namespace PVD_UI.Components
         private void MainUI_Loaded(object sender, RoutedEventArgs e)
         {
             CreateDiagramNodes();
-            // MainContentPanel.DiagramItemsControl.ItemsSource = Nodes;
+            MainContentPanel.DiagramItemsControl.ItemsSource = Nodes;
             
         }
 
