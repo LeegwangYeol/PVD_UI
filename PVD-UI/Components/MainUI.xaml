@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PVD_UI"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:PVD_UI.Components"
+             xmlns:model="clr-namespace:PVD_UI.Components.Model.Layout"
              mc:Ignorable="d" 
-             d:DesignHeight="1024" d:DesignWidth="1280"
+             d:DesignHeight="720" d:DesignWidth="1280"
              Background="#1e1e1e"
              FontFamily="Malgun Gothic">
 
@@ -157,46 +158,7 @@
         </Grid.RowDefinitions>
 
         <!-- 1. 헤더 -->
-        <Border Grid.Row="0" Background="#1f1f23" Padding="16,8">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- HAM 로고 -->
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Robot" Width="32" Height="32" Foreground="#3b82f6"/>
-                    <TextBlock Text="HAM" FontSize="20" FontWeight="Bold" Foreground="White" 
-                               VerticalAlignment="Center" Margin="12,0,0,0"/>
-                </StackPanel>
-
-                <!-- 우측 버튼 그룹 -->
-                <StackPanel Grid.Column="2" Orientation="Horizontal">
-                    <!-- 알림 버튼 -->
-                    <Button Style="{StaticResource MaterialDesignIconButton}" 
-                            ToolTip="알림" Foreground="White" Margin="0,0,8,0">
-                        <materialDesign:PackIcon Kind="Bell" Width="24" Height="24"/>
-                    </Button>
-
-                    <!-- 저장 버튼 -->
-                    <Button Style="{StaticResource MaterialDesignIconButton}" 
-                            ToolTip="저장" Foreground="White" Margin="0,0,8,0">
-                        <materialDesign:PackIcon Kind="ContentSave" Width="24" Height="24"/>
-                    </Button>
-
-                    <!-- 언어 변경 버튼 -->
-                    <Button Style="{StaticResource MaterialDesignIconButton}" 
-                            ToolTip="언어 변경" Foreground="White">
-                        <materialDesign:PackIcon Kind="Translate" Width="24" Height="24"/>
-                    </Button>
-                    <!-- 현재 시간 -->
-                    <TextBlock Text="{Binding CurrentTime, StringFormat='HH:mm:ss'}" 
-                             Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="0,0,16,0"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+        <model:HeaderControl Grid.Row="0" />
 
         <!-- 2. 메인 콘텐츠 -->
         <Grid Grid.Row="1">
@@ -445,81 +407,6 @@
         </Grid>
 
         <!-- 3. 하단 탭 바 -->
-        <Border Grid.Row="2" Background="#27272a" BorderBrush="#3f3f46" BorderThickness="0,1,0,0">
-            <UniformGrid Rows="1" Columns="12">
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="ViewDashboard" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="메인화면"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="작업설정"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Tune" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="환경설정"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="History" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="작업이력"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Input" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="입출력"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Shape" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="모델설정"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Palette" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="팔레트관리"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Ruler" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="캘리브레이션"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="PackageVariant" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="소모품점검"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="VectorLine" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="막대 관리"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="스프링 관리"/>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource CustomFlatButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
-                        <TextBlock Text="시스템설정"/>
-                    </StackPanel>
-                </Button>
-            </UniformGrid>
-        </Border>
+        <model:TabBarControl Grid.Row="2" />
     </Grid>
 </UserControl>

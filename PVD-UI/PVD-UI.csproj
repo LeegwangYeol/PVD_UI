@@ -13,4 +13,9 @@
     <PackageReference Include="MaterialDesignThemes" Version="5.2.2-ci998" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Model\Layout\" />
+    <Folder Include="Components\Model\Views\" />
+  </ItemGroup>
+
 </Project>

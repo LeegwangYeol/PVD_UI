@@ -1,0 +1,135 @@
+<UserControl x:Class="PVD_UI.Components.Model.Layout.TabBarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:PVD_UI.Components.Model.Layout"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="1280"
+             FontFamily="Malgun Gothic">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Blue" SecondaryColor="Purple" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Style for tab buttons -->
+            <Style x:Key="CustomFlatButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="Padding" Value="16,0"/>
+                <Setter Property="BorderThickness" Value="0,3,0,0"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="#3f3f46"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="ActiveTabButtonStyle" TargetType="Button" BasedOn="{StaticResource CustomFlatButton}">
+                <Setter Property="Foreground" Value="#3b82f6"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="BorderBrush" Value="#3b82f6"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Background="#27272a" BorderBrush="#3f3f46" BorderThickness="0,1,0,0">
+        <UniformGrid Rows="1" Columns="12">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Main">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ViewDashboard" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="메인화면"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Work">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="작업설정"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Settings">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Tune" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="환경설정"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="History">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="History" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="작업이력"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="IO">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Input" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="입출력"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Model">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Shape" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="모델설정"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Palette">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Palette" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="팔레트관리"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Calibration">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Ruler" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="캘리브레이션"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Consumables">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="PackageVariant" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="소모품점검"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Bar">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="VectorLine" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="막대 관리"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Spring">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="스프링 관리"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="System">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
+                    <TextBlock Text="시스템설정"/>
+                </StackPanel>
+            </Button>
+        </UniformGrid>
+    </Border>
+</UserControl>
