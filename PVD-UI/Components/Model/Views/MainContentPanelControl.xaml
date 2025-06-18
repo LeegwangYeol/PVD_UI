@@ -122,7 +122,7 @@
             <Ellipse Width="90" Height="90" Fill="#3f3f46" Opacity="1" Margin="255,255,255,255" Grid.RowSpan="2"/>
 
             <!-- 중앙 텍스트 -->
-            <TextBlock Text="ROBOT ARM" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,34,0,0" Grid.Row="1"/>
+            <TextBlock Text="AMPT16" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="1"/>
 
             <!-- 동적 노드들을 담을 컨테이너 -->
             <ItemsControl x:Name="DiagramItemsControl" 

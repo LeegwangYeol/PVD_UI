@@ -8,7 +8,7 @@
              xmlns:layout="clr-namespace:PVD_UI.Components.Model.Layout"
              xmlns:views="clr-namespace:PVD_UI.Components.Model.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1280"
+             d:DesignHeight="1024" d:DesignWidth="1280"
              Background="#1e1e1e"
              FontFamily="Malgun Gothic">
 
