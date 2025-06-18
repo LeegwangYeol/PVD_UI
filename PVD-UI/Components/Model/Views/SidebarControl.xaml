@@ -183,7 +183,7 @@
             </Border>
 
             <!-- 제어 버튼들 -->
-            <UniformGrid Columns="4" Margin="0,16,0,0" HorizontalAlignment="Stretch" Background="#3f3f46">
+            <UniformGrid  Columns="4" Margin="0,16,0,0" HorizontalAlignment="Stretch" Background="#3f3f46">
                 <Button Style="{StaticResource CustomFlatButton}" 
                         Command="{Binding HomeCommand}" 
                         ToolTip="원점복귀">

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:PVD_UI.Components.Model.Views" 
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1200"
              x:Name="MainContentPanel">
@@ -68,44 +69,8 @@
             </Rectangle>
         </Grid>
         
-        <!-- 카메라 피드 플레이스홀더 -->
-        <Grid Margin="-4,0,4,0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Border Grid.Row="0" Grid.Column="0" Background="#27272a" CornerRadius="8" Margin="54,2,6,104" BorderBrush="#00FF00" BorderThickness="2">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                    <TextBlock Text="Camera 1" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                </StackPanel>
-            </Border>
-            <Border Grid.Row="0" Grid.Column="2" Background="#27272a" CornerRadius="8" Margin="57,-4,-4,104" BorderBrush="#00FF00" BorderThickness="2">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                    <TextBlock Text="Camera 2" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                </StackPanel>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="0" Background="#27272a" CornerRadius="8" Margin="67,106,29,0" BorderBrush="#00FF00" BorderThickness="2">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                    <TextBlock Text="Camera 3" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                </StackPanel>
-            </Border>
-            <Border Grid.Row="2" Grid.Column="2" Background="#27272a" CornerRadius="8" Margin="42,96,6,0" BorderBrush="#00FF00" BorderThickness="2">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="Camera" Foreground="Gray" Width="32" Height="32"/>
-                    <TextBlock Text="Camera 4" Foreground="Gray" FontSize="12" Margin="0,4,0,0"/>
-                </StackPanel>
-            </Border>
-        </Grid>
+        <!-- 카메라 피드 컨트롤 -->
+        <views:CameraFeedControl x:Name="CameraFeed" VerticalAlignment="Center" Height="900"/>
 
         <!-- 중앙 다이어그램 (동적 배치) -->
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
