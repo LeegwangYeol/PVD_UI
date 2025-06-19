@@ -163,16 +163,20 @@
 
         <!-- 2. 메인 콘텐츠 -->
         <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="230*"/>
+                <RowDefinition Height="679*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="280"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- 2.1. 왼쪽 사이드바 -->
-            <views:SidebarControl Grid.Column="0" />
+            <views:SidebarControl Grid.Column="0" Grid.RowSpan="2" />
 
             <!-- 2.2. 중앙 메인 패널 -->
-            <views:MainContentPanelControl Grid.Column="1" x:Name="MainContentPanel" DataContext="{Binding}" />
+            <views:MainContentPanelControl Grid.Column="1" x:Name="MainContentPanel" DataContext="{Binding}" Grid.RowSpan="2" />
         </Grid>
 
         <!-- 3. 하단 탭 바 -->
