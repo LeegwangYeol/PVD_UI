@@ -64,14 +64,23 @@ namespace PVD_UI.Components.Model.Views
         {
             get
             {
-                double radius = 60; // 반지름 (120/2)
-                double circumference = 2 * Math.PI * radius;
-                double progressLength = circumference * (Progress / 100);
-                double gapLength = circumference - progressLength;
-
-                return new DoubleCollection { progressLength, gapLength };
-            }
-        }
+                const double radius = 15; // 반지름 (120/2)
+                const double strokeThickness = 8; // StrokeThickness와 일치
+                double effectiveRadius = radius - (strokeThickness / 2); // 실제 중앙선 반지름
+                double circumference = 2 * Math.PI * effectiveRadius;
+        
+        // 진행률이 0% 또는 100%일 때의 경계 조건 처리
+        if (Progress <= 0) return new DoubleCollection { 0.01, double.MaxValue };
+        if (Progress >= 100) return new DoubleCollection { circumference, 0 };
+        
+        double progressLength = circumference * (Progress / 160.0);
+        // 최소 길이 보장 (시각적인 표시를 위해)
+        progressLength = Math.Max(0.01, progressLength);
+        double gapLength = Math.Max(0.01, circumference - progressLength);
+        
+        return new DoubleCollection { progressLength, gapLength };
+    }
+}
         #endregion
 
         #region Private Fields
