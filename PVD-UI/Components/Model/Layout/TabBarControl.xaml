@@ -21,7 +21,7 @@
             <!-- Style for tab buttons -->
             <Style x:Key="CustomFlatButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="Height" Value="50"/>
                 <Setter Property="Padding" Value="16,0"/>
