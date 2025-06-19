@@ -7,384 +7,177 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1200"
-             Background="#1e1e1e" Foreground="White"
+             Background="{DynamicResource MaterialDesignPaper}" 
+             Foreground="{DynamicResource MaterialDesignBody}"
              FontFamily="Malgun Gothic">
-
+    
     <UserControl.Resources>
-        <!-- MaterialDesign 스타일 -->
-        <Style x:Key="MaterialDesignFloatingActionMiniLightButton" TargetType="Button">
-            <Setter Property="Background" Value="#3f3f46"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Width" Value="40"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="Margin" Value="4"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Ellipse x:Name="button" 
-                                   Fill="{TemplateBinding Background}" 
-                                   Stroke="{TemplateBinding BorderBrush}" 
-                                   StrokeThickness="{TemplateBinding BorderThickness}"/>
-                            <ContentPresenter x:Name="contentPresenter" 
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                            Focusable="False" 
-                                            RecognizesAccessKey="True"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="button" Property="Opacity" Value="0.8"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="button" Property="Opacity" Value="0.6"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="button" Property="Opacity" Value="0.3"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="MaterialDesignNavigationRailTabControl" TargetType="TabControl">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="TabStripPlacement" Value="Left"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TabControl">
-                        <DockPanel>
-                            <Border x:Name="HeaderPanel" 
-                                    DockPanel.Dock="Left" 
-                                    Width="72" 
-                                    Background="#1e1e1e">
-                                <TabPanel x:Name="HeaderPanelGrid" 
-                                          IsItemsHost="True" 
-                                          KeyboardNavigation.TabIndex="1"/>
-                            </Border>
-                            <Border x:Name="ContentPanel" 
-                                    Background="#27272a" 
-                                    BorderThickness="1,0,0,0" 
-                                    BorderBrush="#3f3f46">
-                                <ContentPresenter x:Name="PART_SelectedContentHost" 
-                                                ContentSource="SelectedContent" 
-                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                                Margin="4"/>
-                            </Border>
-                        </DockPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="MaterialDesignOutlinedButton" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="#3f3f46"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="16,8"/>
-            <Setter Property="MinWidth" Value="100"/>
-            <Setter Property="MinHeight" Value="36"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" 
-                                Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="4">
-                            <ContentPresenter x:Name="contentPresenter" 
-                                            Focusable="False" 
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                            Margin="{TemplateBinding Padding}" 
-                                            RecognizesAccessKey="True" 
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#2a2a2a"/>
-                                <Setter Property="BorderBrush" Value="#52525b"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#3f3f46"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="0.5"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- MaterialDesignNavigatilRailTabControl 스타일 -->
-        <Style x:Key="MaterialDesignNavigatilRailTabControl" TargetType="TabControl">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="TabStripPlacement" Value="Left"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TabControl">
-                        <DockPanel>
-                            <Border x:Name="HeaderPanel" 
-                                    DockPanel.Dock="Left" 
-                                    Width="72" 
-                                    Background="#1e1e1e">
-                                <TabPanel x:Name="HeaderPanelGrid" 
-                                          IsItemsHost="True" 
-                                          KeyboardNavigation.TabIndex="1"/>
-                            </Border>
-                            <Border x:Name="ContentPanel" 
-                                    Background="#27272a" 
-                                    BorderThickness="1,0,0,0" 
-                                    BorderBrush="#3f3f46">
-                                <ContentPresenter x:Name="PART_SelectedContentHost" 
-                                                ContentSource="SelectedContent" 
-                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                                Margin="4"/>
-                            </Border>
-                        </DockPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="TabStripPlacement" Value="Left">
-                                <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Left"/>
-                                <Setter TargetName="ContentPanel" Property="BorderThickness" Value="1,0,0,0"/>
-                            </Trigger>
-                            <Trigger Property="TabStripPlacement" Value="Top">
-                                <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Top"/>
-                                <Setter TargetName="ContentPanel" Property="BorderThickness" Value="0,1,0,0"/>
-                            </Trigger>
-                            <Trigger Property="TabStripPlacement" Value="Right">
-                                <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Right"/>
-                                <Setter TargetName="ContentPanel" Property="BorderThickness" Value="0,0,1,0"/>
-                            </Trigger>
-                            <Trigger Property="TabStripPlacement" Value="Bottom">
-                                <Setter TargetName="HeaderPanel" Property="DockPanel.Dock" Value="Bottom"/>
-                                <Setter TargetName="ContentPanel" Property="BorderThickness" Value="0,0,0,1"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- MaterialDesignSwitchToggleButton 스타일 -->
-        <Style x:Key="MaterialDesignSwitchToggleButton" TargetType="ToggleButton">
-            <Setter Property="Background" Value="#3f3f46"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Width" Value="40"/>
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="Padding" Value="2"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Border x:Name="border" 
-                                Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="12">
-                            <Grid>
-                                <Ellipse x:Name="thumb" 
-                                         Fill="White" 
-                                         HorizontalAlignment="Left" 
-                                         Width="20" 
-                                         Height="20"
-                                         RenderTransformOrigin="0.5,0.5">
-                                    <Ellipse.RenderTransform>
-                                        <TranslateTransform X="0"/>
-                                    </Ellipse.RenderTransform>
-                                </Ellipse>
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#3b82f6"/>
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="thumb" 
-                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" 
-                                                           To="16" 
-                                                           Duration="0:0:0.2"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="thumb" 
-                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" 
-                                                           To="0" 
-                                                           Duration="0:0:0.2"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#71717a"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="border" Property="Opacity" Value="0.5"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- MaterialDesignFloatingHintTextBox 스타일 -->
-        <Style x:Key="MaterialDesignFloatingHintTextBox" TargetType="TextBox">
-            <Setter Property="Background" Value="#3f3f46"/>
-            <Setter Property="BorderBrush" Value="#52525b"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="12,16,12,4"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="materialDesign:HintAssist.HintOpacity" Value="0.6"/>
-            <Setter Property="materialDesign:HintAssist.FloatingScale" Value="0.8"/>
-            <Setter Property="materialDesign:HintAssist.FloatingOffset" Value="0,-20"/>
-            <Setter Property="materialDesign:HintAssist.HelperTextFontSize" Value="12"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Grid>
-                            <Border x:Name="border" 
-                                    Background="{TemplateBinding Background}" 
-                                    BorderBrush="{TemplateBinding BorderBrush}" 
-                                    BorderThickness="{TemplateBinding BorderThickness}" 
-                                    CornerRadius="4">
-                                <Grid>
-                                    <ScrollViewer x:Name="PART_ContentHost" 
-                                                Margin="{TemplateBinding Padding}" 
-                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                                Focusable="False" 
-                                                HorizontalScrollBarVisibility="Hidden" 
-                                                VerticalScrollBarVisibility="Hidden"/>
-                                    <TextBlock x:Name="HintText"
-                                             Text="{TemplateBinding materialDesign:HintAssist.Hint}"
-                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                             Margin="12,0"
-                                             Foreground="{TemplateBinding Foreground}"
-                                             Opacity="0.6"
-                                             IsHitTestVisible="False"/>
-                                </Grid>
-                            </Border>
-                            <TextBlock x:Name="FloatingHint"
-                                     Text="{TemplateBinding materialDesign:HintAssist.Hint}"
-                                     Foreground="{TemplateBinding Foreground}"
-                                     Opacity="0"
-                                     IsHitTestVisible="False"/>
-                            <TextBlock x:Name="HelperText"
-                                     Text="{TemplateBinding materialDesign:HintAssist.HelperText}"
-                                     Foreground="#a1a1aa"
-                                     Margin="4,4,0,0"
-                                     FontSize="12"
-                                     Opacity="0"
-                                     IsHitTestVisible="False"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#71717a"/>
-                            </Trigger>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#3b82f6"/>
-                                <Setter TargetName="FloatingHint" Property="Opacity" Value="1"/>
-                                <Setter TargetName="HintText" Property="Opacity" Value="0"/>
-                            </Trigger>
-                            <Trigger Property="Text" Value="">
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="FloatingHint"
-                                                           Storyboard.TargetProperty="Opacity"
-                                                           To="0"
-                                                           Duration="0:0:0.2"/>
-                                            <DoubleAnimation Storyboard.TargetName="HintText"
-                                                           Storyboard.TargetProperty="Opacity"
-                                                           To="0.6"
-                                                           Duration="0:0:0.2"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                            </Trigger>
-                            <Trigger Property="Text" Value="{x:Null}">
-                                <Setter TargetName="FloatingHint" Property="Opacity" Value="0"/>
-                                <Setter TargetName="HintText" Property="Opacity" Value="0.6"/>
-                            </Trigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="IsFocused" Value="True"/>
-                                    <Condition Property="Text" Value=""/>
-                                </MultiTrigger.Conditions>
-                                <MultiTrigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="FloatingHint"
-                                                           Storyboard.TargetProperty="Opacity"
-                                                           To="1"
-                                                           Duration="0:0:0.2"/>
-                                            <DoubleAnimation Storyboard.TargetName="HintText"
-                                                           Storyboard.TargetProperty="Opacity"
-                                                           To="0"
-                                                           Duration="0:0:0.2"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </MultiTrigger.EnterActions>
-                            </MultiTrigger>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=materialDesign:HintAssist.HelperText}" Value="{x:Null}">
-                                <Setter TargetName="HelperText" Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=materialDesign:HintAssist.HelperText}" Value="">
-                                <Setter TargetName="HelperText" Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                            <Trigger Property="materialDesign:HintAssist.HelperText" Value="{x:Null}">
-                                <Setter TargetName="HelperText" Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-                            <Trigger Property="materialDesign:HintAssist.HelperText" Value="">
-                                <Setter TargetName="HelperText" Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-                            <Trigger Property="materialDesign:HintAssist.HelperText" Value="{x:Null}">
-                                <Setter TargetName="HelperText" Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-                            <Trigger Property="Validation.HasError" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#ef4444"/>
-                                <Setter TargetName="HelperText" Property="Text" Value="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=(Validation.Errors)[0].ErrorContent}"/>
-                                <Setter TargetName="HelperText" Property="Foreground" Value="#ef4444"/>
-                                <Setter TargetName="HelperText" Property="Opacity" Value="1"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- 공통 스타일 정의 -->
-        <Style TargetType="TextBlock" x:Key="SectionHeader">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Margin" Value="0,0,0,16"/>
-        </Style>
-        <Style TargetType="TextBlock" x:Key="SettingLabel">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="14"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
             
-        </Style>
-        <Style TargetType="materialDesign:PackIcon" x:Key="TabIcon">
-            <Setter Property="Width" Value="18"/>
-            <Setter Property="Height" Value="18"/>
-            <Setter Property="Margin" Value="0,0,8,0"/>
-        </Style>
+            <!-- MaterialDesign 기본 색상 오버라이드 -->
+            <SolidColorBrush x:Key="MaterialDesignDivider" Color="#1FFFFFFF" />
+            <SolidColorBrush x:Key="MaterialDesignBody" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="MaterialDesignBackground" Color="#1E1E1E" />
+            <SolidColorBrush x:Key="MaterialDesignPaper" Color="#1E1E1E" />
+            <SolidColorBrush x:Key="MaterialDesignCardBackground" Color="#252526" />
+            <SolidColorBrush x:Key="MaterialDesignToolBarBackground" Color="#2D2D30" />
+            <SolidColorBrush x:Key="MaterialDesignBodyLight" Color="#B3FFFFFF" />
+            <SolidColorBrush x:Key="MaterialDesignBodyDisabled" Color="#4DFFFFFF" />
+            <SolidColorBrush x:Key="MaterialDesignSelection" Color="#3E3E40" />
+            <SolidColorBrush x:Key="MaterialDesignToolBackground" Color="#2D2D30" />
+            <SolidColorBrush x:Key="MaterialDesignBorder" Color="#3F3F46" />
+            <SolidColorBrush x:Key="MaterialDesignValidationError" Color="#FF8A2BE2" />
+            <SolidColorBrush x:Key="MaterialDesignBackgroundLevel1" Color="#252526" />
+            <SolidColorBrush x:Key="MaterialDesignBackgroundLevel2" Color="#1E1E1E" />
+            <SolidColorBrush x:Key="MaterialDesignBackgroundLevel3" Color="#252526" />
+            <SolidColorBrush x:Key="MaterialDesignBackgroundLevel4" Color="#2D2D30" />
+            <SolidColorBrush x:Key="MaterialDesignTextAreaInactiveBorder" Color="#3F3F46" />
+            <SolidColorBrush x:Key="MaterialDesignTextAreaBorder" Color="#3F3F46" />
+            <SolidColorBrush x:Key="MaterialDesignTextBoxBorder" Color="#3F3F46" />
+            <SolidColorBrush x:Key="MaterialDesignCheckBoxDisabled" Color="#4D4D4D" />
+            <SolidColorBrush x:Key="MaterialDesignCheckBoxOff" Color="#A5A5A5" />
+            <SolidColorBrush x:Key="MaterialDesignCheckBoxDisabledOff" Color="#3F3F3F" />
+            <SolidColorBrush x:Key="MaterialDesignSliderThumb" Color="#3B82F6" />
+            <SolidColorBrush x:Key="MaterialDesignSliderThumbHover" Color="#2563EB" />
+            <SolidColorBrush x:Key="MaterialDesignSliderThumbDisabled" Color="#1E40AF" />
+            <SolidColorBrush x:Key="MaterialDesignSliderTrackValue" Color="#3B82F6" />
+            <SolidColorBrush x:Key="MaterialDesignSliderTrackValueHover" Color="#2563EB" />
+            <SolidColorBrush x:Key="MaterialDesignSliderTrackValueDisabled" Color="#1E40AF" />
+            <SolidColorBrush x:Key="MaterialDesignSwitchThumbOn" Color="#3B82F6" />
+            <SolidColorBrush x:Key="MaterialDesignSwitchThumbOff" Color="#E5E7EB" />
+            <SolidColorBrush x:Key="MaterialDesignSwitchTrackOn" Color="#93C5FD" />
+            <SolidColorBrush x:Key="MaterialDesignSwitchTrackOff" Color="#6B7280" />
+            <SolidColorBrush x:Key="MaterialDesignSwitchThumbDisabled" Color="#9CA3AF" />
+            <SolidColorBrush x:Key="MaterialDesignSwitchTrackDisabled" Color="#4B5563" />
+
+            <!-- 앱 전용 색상 -->
+            <SolidColorBrush x:Key="PrimaryColor" Color="#3b82f6" />
+            <SolidColorBrush x:Key="SecondaryColor" Color="#4a4a54" />
+            <SolidColorBrush x:Key="BackgroundDark" Color="#27272a" />
+            <SolidColorBrush x:Key="BorderColor" Color="#3f3f46" />
+            <SolidColorBrush x:Key="TextPrimary" Color="#ffffff" />
+            <SolidColorBrush x:Key="TextSecondary" Color="#a1a1aa" />
+            <SolidColorBrush x:Key="ErrorColor" Color="#ef4444" />
+            <SolidColorBrush x:Key="SuccessColor" Color="#10b981" />
+            <SolidColorBrush x:Key="WarningColor" Color="#f59e0b" />
+            <SolidColorBrush x:Key="InfoColor" Color="#3b82f6" />
+           
+            <!-- 기본 스타일 오버라이드 -->
+            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <Setter Property="Foreground" Value="{StaticResource MaterialDesignBody}"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MaterialDesignDivider}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="16,8"/>
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="materialDesign:RippleAssist.Feedback" Value="#1FFFFFFF"/>
+            </Style>
+
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <Setter Property="Background" Value="{StaticResource MaterialDesignBackground}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MaterialDesignDivider}"/>
+                <Setter Property="Foreground" Value="{StaticResource MaterialDesignBody}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="12,16,12,4"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="ToggleButton" BasedOn="{StaticResource MaterialDesignSwitchToggleButton}">
+                <Setter Property="Foreground" Value="{StaticResource MaterialDesignBody}"/>
+            </Style>
+
+            <!-- 탭 아이콘 스타일 -->
+            <Style x:Key="TabIcon" TargetType="materialDesign:PackIcon">
+                <Setter Property="Width" Value="24"/>
+                <Setter Property="Height" Value="24"/>
+                <Setter Property="Margin" Value="0,0,8,0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+           <!-- TabControl 스타일 -->
+<Style TargetType="TabControl">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+</Style>
+
+<!-- TabItem 스타일 -->
+<Style TargetType="TabItem">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Padding" Value="16,8"/>
+    <Style.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+            <!-- 선택된 탭의 배경색을 약간 밝게 -->
+            <Setter Property="Background" Value="#1AFFFFFF"/>
+        </Trigger>
+        <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Background" Value="Transparent"/>
+        </Trigger>
+    </Style.Triggers>
+</Style>
+
+            <!-- 섹션 헤더 스타일 -->
+            <Style x:Key="SectionHeader" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Margin" Value="0,0,0,16"/>
+                <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+            </Style>
+
+            <!-- 설정 항목 스타일 -->
+            <Style x:Key="SettingItem" TargetType="StackPanel">
+                <Setter Property="Margin" Value="0,0,0,24"/>
+            </Style>
+
+            <!-- 설정 레이블 스타일 -->
+            <Style x:Key="SettingLabel" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Margin" Value="0,0,0,8"/>
+                <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+            </Style>
+
+            <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="24,8"/>
+                        <Setter Property="Margin" Value="8,0,0,0"/>
+                        <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="4"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1a84ff"/>
+                                <Setter Property="materialDesign:ElevationAssist.Elevation" Value="Dp2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#005cbf"/>
+                                <Setter Property="materialDesign:ElevationAssist.Elevation" Value="Dp1"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.6"/>
+                            </Trigger>
+                        </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid>
         <!-- 전체 패널을 감싸는 카드 형태의 보더 -->
-        <Border Background="#27272a" CornerRadius="12" Margin="40" Padding="24">
+        <Border Background="{StaticResource BackgroundDark}" CornerRadius="12" Margin="40" Padding="24">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -394,141 +187,146 @@
 
                 <!-- 1. 헤더 영역 -->
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,24">
-                    <materialDesign:PackIcon Kind="Cog" Width="28" Height="28" VerticalAlignment="Center"/>
-                    <TextBlock Text="로봇 환경 설정" FontSize="24" FontWeight="Bold" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="로봇 설정" FontSize="24" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock Text="로봇의 다양한 설정을 관리합니다." 
+                               Margin="16,0,0,0" 
+                               VerticalAlignment="Center" 
+                               Foreground="{StaticResource TextSecondary}"/>
                 </StackPanel>
 
-                <!-- 2. 메인 설정 탭 영역 -->
-                <TabControl Grid.Row="1" Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
-                    <!-- 일반 설정 탭 -->
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Tune" Style="{StaticResource TabIcon}"/>
-                                <TextBlock Text="일반"/>
-                            </StackPanel>
-                        </TabItem.Header>
-                        <Grid Margin="16,0">
-                            <StackPanel>
-                                <TextBlock Text="시스템 상태" Style="{StaticResource SectionHeader}"/>
-                                <Grid Margin="0,0,0,20">
-                                    <TextBlock Text="로봇 전원" Style="{StaticResource SettingLabel}"/>
-                                    <ToggleButton IsChecked="{Binding RobotPower}" Style="{StaticResource MaterialDesignSwitchToggleButton}" HorizontalAlignment="Right"/>
-                                </Grid>
-                                <Grid Margin="0,0,0,20">
-                                    <TextBlock Text="네트워크 상태" Style="{StaticResource SettingLabel}"/>
-                                    <Border Background="#10b981" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right">
-                                        <TextBlock Text="연결됨" FontSize="12" FontWeight="SemiBold"/>
-                                    </Border>
-                                </Grid>
-                                <Grid>
-                                    <TextBlock Text="시스템 상태" Style="{StaticResource SettingLabel}"/>
-                                    <Border Background="#3b82f6" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right">
-                                        <TextBlock Text="정상" FontSize="12" FontWeight="SemiBold"/>
-                                    </Border>
-                                </Grid>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem>
-
-                    <!-- 움직임 설정 탭 -->
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Gesture" Style="{StaticResource TabIcon}"/>
-                                <TextBlock Text="움직임"/>
-                            </StackPanel>
-                        </TabItem.Header>
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="16,0">
-                            <StackPanel>
-                                <TextBlock Text="동작 설정" Style="{StaticResource SectionHeader}"/>
-                                <Grid Margin="0,0,0,20">
-                                    <TextBlock Text="속도" Style="{StaticResource SettingLabel}"/>
-                                    <Slider Value="{Binding Speed}" Minimum="0" Maximum="100" Width="200" HorizontalAlignment="Right"/>
-                                </Grid>
-                                <Grid>
-                                    <TextBlock Text="정밀도" Style="{StaticResource SettingLabel}"/>
-                                    <Slider Value="{Binding Precision}" Minimum="0" Maximum="100" Width="200" HorizontalAlignment="Right"/>
-                                </Grid>
-
-                                <Separator Margin="0,24"/>
-
-                                <TextBlock Text="수동 조작" Style="{StaticResource SectionHeader}"/>
-                                <DockPanel>
-                                    <UniformGrid DockPanel.Dock="Left" Columns="3" Rows="3" Width="200" Height="200">
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#3f3f46">
-                                            <materialDesign:PackIcon Kind="Home"/>
-                                        </Button>
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#3f3f46">
-                                            <materialDesign:PackIcon Kind="ArrowUp"/>
-                                        </Button>
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#3f3f46">
-                                            <materialDesign:PackIcon Kind="Target"/>
-                                        </Button>
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#3f3f46">
-                                            <materialDesign:PackIcon Kind="ArrowLeft"/>
-                                        </Button>
-                                        <Button IsEnabled="False"/>
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#3f3f46">
-                                            <materialDesign:PackIcon Kind="ArrowRight"/>
-                                        </Button>
-                                        <Button/>
-                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="#3f3f46">
-                                            <materialDesign:PackIcon Kind="ArrowDown"/>
-                                        </Button>
-                                        <Button/>
-                                    </UniformGrid>
-                                    <StackPanel Margin="24,0,0,0">
-                                        <TextBox materialDesign:HintAssist.Hint="이동 거리 (mm)" Text="{Binding MoveDistance}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,16"/>
-                                        <TextBox materialDesign:HintAssist.Hint="회전 각도 (°)" Text="{Binding RotationAngle}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <!-- 2. 탭 컨트롤 -->
+                <materialDesign:Card Grid.Row="1" Padding="0" Margin="0,0,0,24">
+                    <TabControl>
+                        <!-- 일반 설정 탭 -->
+                        <TabItem Header="일반">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                                <StackPanel>
+                                    <!-- 로봇 정보 섹션 -->
+                                    <TextBlock Text="로봇 정보" Style="{StaticResource SectionHeader}"/>
+                                    
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="로봇 이름" Style="{StaticResource SettingLabel}"/>
+                                        <TextBox materialDesign:HintAssist.Hint="로봇 이름을 입력하세요"/>
                                     </StackPanel>
-                                </DockPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
 
-                    <!-- 센서 및 안전 탭 -->
-                    <TabItem>
-                        <TabItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ShieldCheckOutline" Style="{StaticResource TabIcon}"/>
-                                <TextBlock Text="센서 및 안전"/>
-                            </StackPanel>
-                        </TabItem.Header>
-                        <Grid Margin="16,0">
-                            <StackPanel>
-                                <TextBlock Text="안전 기능" Style="{StaticResource SectionHeader}"/>
-                                <Grid Margin="0,0,0,20">
-                                    <TextBlock Text="비상 정지" Style="{StaticResource SettingLabel}" Foreground="#ef4444"/>
-                                    <ToggleButton IsChecked="{Binding EmergencyStop}" Style="{StaticResource MaterialDesignSwitchToggleButton}" HorizontalAlignment="Right"/>
-                                </Grid>
-                                <Grid>
-                                    <TextBlock Text="안전 가드" Style="{StaticResource SettingLabel}"/>
-                                    <Border Background="#10b981" CornerRadius="12" Padding="8,4" HorizontalAlignment="Right">
-                                        <TextBlock Text="활성화" FontSize="12" FontWeight="SemiBold"/>
-                                    </Border>
-                                </Grid>
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="로봇 ID" Style="{StaticResource SettingLabel}"/>
+                                        <TextBox IsReadOnly="True" Text="RB-001"/>
+                                    </StackPanel>
 
-                                <Separator Margin="0,24"/>
+                                    <StackPanel Style="{StaticResource SettingItem}" Orientation="Horizontal">
+                                        <ToggleButton x:Name="MaintenanceModeToggle" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="0,0,8,0"/>
+                                        <TextBlock Text="유지보수 모드" VerticalAlignment="Center" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
 
-                                <TextBlock Text="센서 모니터링" Style="{StaticResource SectionHeader}"/>
-                                <Grid Margin="0,0,0,20">
-                                    <TextBlock Text="코어 온도" Style="{StaticResource SettingLabel}"/>
-                                    <TextBlock Text="{Binding Temperature, StringFormat={}{0}°C}" HorizontalAlignment="Right" Style="{StaticResource SettingLabel}"/>
-                                </Grid>
-                                <Grid>
-                                    <TextBlock Text="그리퍼 압력" Style="{StaticResource SettingLabel}"/>
-                                    <TextBlock Text="{Binding Pressure, StringFormat={}{0}%}" HorizontalAlignment="Right" Style="{StaticResource SettingLabel}"/>
-                                </Grid>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem>
-                </TabControl>
+                        <!-- 네트워크 설정 탭 -->
+                        <TabItem Header="네트워크">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                                <StackPanel>
+                                    <TextBlock Text="네트워크 설정" Style="{StaticResource SectionHeader}"/>
+                                    
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="IP 주소" Style="{StaticResource SettingLabel}"/>
+                                        <TextBox materialDesign:HintAssist.Hint="예: 192.168.1.100"/>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="서브넷 마스크" Style="{StaticResource SettingLabel}"/>
+                                        <TextBox materialDesign:HintAssist.Hint="예: 255.255.255.0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource SettingItem}" Orientation="Horizontal">
+                                        <ToggleButton x:Name="DhcpToggle" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="0,0,8,0"
+                                                    IsChecked="True"/>
+                                        <TextBlock Text="DHCP 사용" VerticalAlignment="Center" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <!-- 움직임 설정 탭 -->
+                        <TabItem Header="움직임">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                                <StackPanel>
+                                    <TextBlock Text="움직임 설정" Style="{StaticResource SectionHeader}"/>
+                                    
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="최대 속도" Style="{StaticResource SettingLabel}"/>
+                                        <Slider Minimum="0" Maximum="100" Value="50" Margin="0,8,0,0"/>
+                                        <TextBlock Text="50%" HorizontalAlignment="Right" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="가속도" Style="{StaticResource SettingLabel}"/>
+                                        <Slider Minimum="0" Maximum="100" Value="70" Margin="0,8,0,0"/>
+                                        <TextBlock Text="70%" HorizontalAlignment="Right" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource SettingItem}" Orientation="Horizontal">
+                                        <ToggleButton x:Name="CollisionAvoidanceToggle" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="0,0,8,0"
+                                                    IsChecked="True"/>
+                                        <TextBlock Text="충돌 회피 기능" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <!-- 센서 및 안전 탭 -->
+                        <TabItem Header="센서 및 안전">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                                <StackPanel>
+                                    <TextBlock Text="안전 설정" Style="{StaticResource SectionHeader}"/>
+                                    
+                                    <StackPanel Style="{StaticResource SettingItem}" Orientation="Horizontal">
+                                        <ToggleButton x:Name="EmergencyStopToggle" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="0,0,8,0"
+                                                    IsChecked="True"/>
+                                        <TextBlock Text="비상 정지 버튼 활성화" VerticalAlignment="Center" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource SettingItem}" Orientation="Horizontal">
+                                        <ToggleButton x:Name="ObstacleDetectionToggle" 
+                                                    VerticalAlignment="Center" 
+                                                    Margin="0,0,8,0"
+                                                    IsChecked="True"/>
+                                        <TextBlock Text="장애물 감지 센서" VerticalAlignment="Center" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+
+                                    <TextBlock Text="경고 임계값" Style="{StaticResource SectionHeader}" Margin="0,24,0,0"/>
+                                    
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="배터리 경고 수준" Style="{StaticResource SettingLabel}"/>
+                                        <Slider Minimum="0" Maximum="100" Value="20" Margin="0,8,0,0"/>
+                                        <TextBlock Text="20%" HorizontalAlignment="Right" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource SettingItem}">
+                                        <TextBlock Text="온도 경고 수준" Style="{StaticResource SettingLabel}"/>
+                                        <Slider Minimum="0" Maximum="100" Value="80" Margin="0,8,0,0"/>
+                                        <TextBlock Text="80°C" HorizontalAlignment="Right" Foreground="{StaticResource TextSecondary}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                    </TabControl>
+                </materialDesign:Card>
+
+                <!-- 버튼 스타일 -->
 
                 <!-- 3. 하단 버튼 영역 -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,24,0,0">
-                    <Button Content="초기화" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="0,0,16,0"/>
-                    <Button Content="설정 저장" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <Button Content="초기화" Style="{StaticResource PrimaryButton}"/>
+                    <Button Content="적용" Style="{StaticResource PrimaryButton}"/>
                 </StackPanel>
             </Grid>
         </Border>
