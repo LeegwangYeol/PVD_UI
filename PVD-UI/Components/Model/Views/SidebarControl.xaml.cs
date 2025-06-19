@@ -104,7 +104,7 @@ namespace PVD_UI.Components.Model.Views
             _timer.Start();
 
             // 진행률 변경 테스트 타이머 (실제 사용시에는 제거하고 외부 데이터와 연동)
-            _progressTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(3) };
+            _progressTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _progressTimer.Tick += ProgressTimer_Tick;
             _progressTimer.Start();
 
@@ -137,7 +137,7 @@ namespace PVD_UI.Components.Model.Views
         private void ProgressTimer_Tick(object? sender, EventArgs e)
         {
             // 진행률 테스트용 - 0%에서 100%까지 5%씩 증가 후 다시 0%로 순환
-            Progress = (Progress >= 100) ? 0 : Progress + 5;
+            Progress = (Progress >= 100) ? 0 : Progress + 1;
         }
         #endregion
 
