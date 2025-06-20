@@ -165,7 +165,7 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="230*"/>
-                <RowDefinition Height="679*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="280"/>
@@ -176,10 +176,10 @@
             <views:SidebarControl Grid.Column="0" Grid.RowSpan="2" />
 
             <!-- 2.2. 중앙 메인 패널 -->
-            <views:MainContentPanelControl Grid.Column="1" x:Name="MainContentPanel" DataContext="{Binding}" Grid.RowSpan="2" />
+            <ContentControl Grid.Column="1" Content="{Binding CurrentView}" />
         </Grid>
 
         <!-- 3. 하단 탭 바 -->
-        <layout:TabBarControl Grid.Row="2" />
+        <layout:TabBarControl Grid.Row="2" DataContext="{Binding}" />
     </Grid>
 </UserControl>

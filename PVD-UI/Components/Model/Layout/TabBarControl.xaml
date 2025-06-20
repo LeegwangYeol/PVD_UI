@@ -58,13 +58,13 @@
 
     <Border Background="#27272a" BorderBrush="#3f3f46" BorderThickness="0,1,0,0">
         <UniformGrid Rows="1" Columns="12">
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Main">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="메인">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ViewDashboard" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="메인화면"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Work">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="작업">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="작업설정"/>

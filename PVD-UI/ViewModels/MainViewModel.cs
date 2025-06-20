@@ -1,23 +1,57 @@
 // 파일 경로: /ViewModels/MainViewModel.cs
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 using PVD_UI.Components.Models;
+using PVD_UI.Components.Model.Views;
 
 namespace PVD_UI.ViewModels
 {
+    public class RelayCommand<T> : ICommand
+    {
+        private readonly Action<T> _execute;
+        private readonly Predicate<T> _canExecute;
+
+        public RelayCommand(Action<T> execute, Predicate<T> canExecute = null)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter) => _canExecute?.Invoke((T)parameter) ?? true;
+        public void Execute(object parameter) => _execute((T)parameter);
+        public event EventHandler CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
+        }
+    }
+
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly DispatcherTimer _timer;
         private DateTime _currentTime;
         private object _currentView;
         private ObservableCollection<DiagramNode> _nodes;
+        private readonly Dictionary<string, FrameworkElement> _views;
+        private string _currentViewKey;
+        public ICommand NavigateCommand { get; private set; }
 
         public MainViewModel()
         {
             // Initialize collections
             _nodes = new ObservableCollection<DiagramNode>();
+            _views = new Dictionary<string, FrameworkElement>();
+            
+            // Initialize commands
+            NavigateCommand = new RelayCommand<string>(Navigate);
+            
+            // Initialize views
+            InitializeViews();
             
             // Set initial time
             CurrentTime = DateTime.Now;
@@ -29,6 +63,30 @@ namespace PVD_UI.ViewModels
             
             // Initialize nodes
             CreateDiagramNodes();
+            
+            // 기본 뷰 설정
+            Navigate("메인");
+        }
+        
+        private void InitializeViews()
+        {
+            // 모든 뷰 등록
+            _views["메인"] = new PVD_UI.Components.Model.Views.MainContentPanelControl();
+            _views["작업"] = new PVD_UI.Components.Views.MechanicalDeviceView();
+            
+            // 필요에 따라 다른 뷰들 추가
+            // _views["환경"] = new SettingsView();
+            // _views["이력"] = new HistoryView();
+        }
+        
+        private void Navigate(string viewKey)
+        {
+            if (string.IsNullOrEmpty(viewKey) || !_views.ContainsKey(viewKey))
+                return;
+                
+            _currentViewKey = viewKey;
+            CurrentView = _views[viewKey];
+            OnPropertyChanged(nameof(CurrentView));
         }
 
         public DateTime CurrentTime
