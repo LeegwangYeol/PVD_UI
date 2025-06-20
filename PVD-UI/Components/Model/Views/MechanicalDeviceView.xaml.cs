@@ -1,4 +1,4 @@
-﻿// 파일 경로: /Components/Views/MechanicalDeviceView.xaml.cs
+// 파일 경로: /Components/Views/MechanicalDeviceView.xaml.cs
 
 using System;
 using System.Collections.Generic;
@@ -55,7 +55,8 @@ namespace PVD_UI.Components.Views
         private double _barHeight = 60;
         private double _productWidth = 60;
         private double _productHeight = 4;
-        private double _springSize = 60; // 원본 코드에서 너비와 높이를 같은 값으로 사용
+        private double _springWidth = 60;
+        private double _springHeight = 60;
         private double _barRenderHeight;
         #endregion
 
@@ -80,8 +81,20 @@ namespace PVD_UI.Components.Views
 
         public double SpringSize
         {
-            get => _springSize;
-            set { _springSize = value; OnPropertyChanged(nameof(SpringSize)); UpdateVisualization(); }
+            get => _springWidth; // For backward compatibility
+            set { SpringWidth = value; SpringHeight = value; }
+        }
+
+        public double SpringWidth
+        {
+            get => _springWidth;
+            set { _springWidth = value; OnPropertyChanged(nameof(SpringWidth)); UpdateVisualization(); }
+        }
+
+        public double SpringHeight
+        {
+            get => _springHeight;
+            set { _springHeight = value; OnPropertyChanged(nameof(SpringHeight)); UpdateVisualization(); }
         }
 
         public double BarRenderHeight
@@ -112,12 +125,12 @@ namespace PVD_UI.Components.Views
             int totalElements = Math.Max(2, (int)Math.Floor(_barHeight / 10));
             double availableHeight = BarRenderHeight - 40;
 
-            double totalTheoreticalHeight = Math.Floor(totalElements / 2.0) * _productHeight + Math.Ceiling(totalElements / 2.0) * _springSize;
+            double totalTheoreticalHeight = Math.Floor(totalElements / 2.0) * _productHeight + Math.Ceiling(totalElements / 2.0) * _springHeight;
 
             double compressionRatio = totalTheoreticalHeight > availableHeight ? availableHeight / totalTheoreticalHeight : 1.0;
 
             double compressedProductHeight = _productHeight * compressionRatio;
-            double compressedSpringHeight = _springSize * compressionRatio;
+            double compressedSpringHeight = _springHeight * compressionRatio;
 
             // 2. 계산된 결과를 바탕으로 UI 요소 컬렉션 업데이트
             Elements.Clear();
@@ -129,7 +142,7 @@ namespace PVD_UI.Components.Views
                     element = new MechanicalElement
                     {
                         Type = ElementType.Spring,
-                        Width = _springSize,
+                        Width = _springWidth,
                         Height = compressedSpringHeight
                     };
                 }

@@ -44,8 +44,11 @@
                 <TextBlock Text="제품 높이" Margin="0,10,0,5"/>
                 <Slider Value="{Binding ProductHeight, Mode=TwoWay}" Minimum="2" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True"/>
 
-                <TextBlock Text="스프링 너비/높이" Margin="0,10,0,5"/>
-                <Slider Value="{Binding SpringSize, Mode=TwoWay}" Minimum="20" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <TextBlock Text="스프링 너비" Margin="0,10,0,5"/>
+                <Slider Value="{Binding SpringWidth, Mode=TwoWay}" Minimum="20" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                
+                <TextBlock Text="스프링 높이" Margin="0,10,0,5"/>
+                <Slider Value="{Binding SpringHeight, Mode=TwoWay}" Minimum="20" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
             </StackPanel>
         </Border>
 
