@@ -109,25 +109,10 @@ namespace PVD_UI.Components.Model.Views
             _progressTimer.Start();
 
             // 이벤트 핸들러 등록
-            this.Loaded += SidebarControl_Loaded;
-            this.Unloaded += SidebarControl_Unloaded;
         }
         #endregion
 
         #region Event Handlers
-        private void SidebarControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //CreateDiagramNodes();
-            // DiagramItemsControl이 XAML에서 ItemsSource="{Binding Nodes}"로 바인딩되어 있다면
-            // 별도로 ItemsSource를 설정할 필요 없음
-        }
-
-        private void SidebarControl_Unloaded(object sender, RoutedEventArgs e)
-        {
-            // 컨트롤이 화면에서 사라질 때 타이머 리소스 정리
-            _timer?.Stop();
-            _progressTimer?.Stop();
-        }
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -143,51 +128,6 @@ namespace PVD_UI.Components.Model.Views
 
         #region Private Methods
         /// <summary>
-        /// 다이어그램 노드를 동적으로 생성하고 배치합니다.
-        /// </summary>
-        private void CreateDiagramNodes()
-        {
-            Nodes.Clear();
-
-            int totalNodes = 50;
-            double centerX = 300;
-            double centerY = 300;
-            double innerRadius = 220;
-            double outerRadius = 270;
-            double nodeWidth = 50;
-            double nodeHeight = 50;
-
-            for (int i = 1; i <= totalNodes; i++)
-            {
-                // 각 노드는 7.2도씩 이동 (360도 / 50개 노드)
-                // -120도 오프셋: 1번 노드를 4시 방향 근처에서 시작하도록 조정
-                double angleInDegrees = (i - 1) * 7.2 - 120;
-                double angleInRadians = Math.PI * angleInDegrees / 180.0;
-
-                // 홀수 노드는 안쪽 원, 짝수 노드는 바깥쪽 원에 위치
-                double currentRadius = (i % 2 == 1) ? innerRadius : outerRadius;
-
-                // 원 위의 노드 중심 좌표 계산
-                double nodeCenterX = centerX + currentRadius * Math.Cos(angleInRadians);
-                double nodeCenterY = centerY + currentRadius * Math.Sin(angleInRadians);
-
-                // Canvas.Left/Top을 위한 최종 좌표 보정
-                double finalX = nodeCenterX - (nodeWidth / 2);
-                double finalY = nodeCenterY - (nodeHeight / 2);
-
-                Nodes.Add(new DiagramNode
-                {
-                    Number = i,
-                    X = finalX,
-                    Y = finalY,
-                    IsHighlighted = (i == 34 || i == 35 || i == 36)
-                });
-            }
-        }
-
-        
-
-        /// <summary>
         /// 진행률을 수동으로 설정합니다.
         /// </summary>
         /// <param name="percentage">진행률 (0-100)</param>
@@ -199,34 +139,7 @@ namespace PVD_UI.Components.Model.Views
             }
         }
 
-        /// <summary>
-        /// 다이어그램 노드의 반지름을 동적으로 변경합니다.
-        /// </summary>
-        /// <param name="innerRadius">홀수 노드 반지름</param>
-        /// <param name="outerRadius">짝수 노드 반지름</param>
-        public void UpdateNodeRadius(double innerRadius, double outerRadius)
-        {
-            // 기존 노드들의 위치를 새로운 반지름으로 재계산
-            double centerX = 300;
-            double centerY = 300;
-            double nodeWidth = 50;
-            double nodeHeight = 50;
-
-            for (int i = 0; i < Nodes.Count; i++)
-            {
-                var node = Nodes[i];
-                double angleInDegrees = i * 7.2 - 120;
-                double angleInRadians = Math.PI * angleInDegrees / 180.0;
-
-                double currentRadius = ((i + 1) % 2 == 1) ? innerRadius : outerRadius;
-
-                double nodeCenterX = centerX + currentRadius * Math.Cos(angleInRadians);
-                double nodeCenterY = centerY + currentRadius * Math.Sin(angleInRadians);
-
-                node.X = nodeCenterX - (nodeWidth / 2);
-                node.Y = nodeCenterY - (nodeHeight / 2);
-            }
-        }
+   
         #endregion
 
         #region Public Methods
