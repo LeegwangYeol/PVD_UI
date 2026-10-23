@@ -38,7 +38,7 @@ jobs:
             - If you cannot settle on a safe fix, finish without changes and without a pull request.
 
             ## This repository
-            WPF operator UI for a PVD/robot line (`PVD-UI/PVD-UI.csproj`, `net8.0-windows`): `MainWindow`, `Components/MainUI`, layout controls (`HeaderControl`, `TabBarControl`), views (`CameraFeedControl`, `MechanicalDeviceView`, `PalletStatusView`, `RobotSettingsView`, `SidebarControl`), `Components/Model/DiagramNode.cs`, `Converters/PlateStatusToBrushConverter.cs`, `ViewModels/MainViewModel.cs`.
+            WPF operator UI for a PVD/robot line (`PVD-UI/PVD-UI.csproj`, `net8.0-windows`; all code under `PVD-UI/`): `PVD-UI/MainWindow.xaml`, `PVD-UI/Components/MainUI.xaml`, layout controls in `PVD-UI/Components/Model/Layout/` (`HeaderControl`, `TabBarControl`), views in `PVD-UI/Components/Model/Views/` (`CameraFeedControl`, `MechanicalDeviceView`, `PalletStatusView`, `RobotSettingsView`, `SidebarControl`), `PVD-UI/Components/Model/DiagramNode.cs`, `PVD-UI/Converters/PlateStatusToBrushConverter.cs`, `PVD-UI/ViewModels/MainViewModel.cs`.
 
             Setup and checks:
             - Windows-only WPF: it cannot be built or run on this Linux VM. Do not try to install .NET for it.
@@ -48,7 +48,7 @@ jobs:
             - `MainViewModel` state transitions and `PropertyChanged` coverage, `PlateStatusToBrushConverter` for unknown/null status values, `DiagramNode` collection mutation from timers or background threads, `CameraFeedControl` resource release (image streams, timers) on unload, bindings in XAML that reference properties the view model lacks.
 
             Leave alone:
-            - Visual design (layout, colours, sizes), `AssemblyInfo.cs`, the target framework, `.gitignore`.
+            - Visual design (layout, colours, sizes), `PVD-UI/AssemblyInfo.cs`, the target framework, `.gitignore`.
 
             ## Goal
             Find ONE real defect and fix it in a small, safe pull request.
@@ -72,6 +72,8 @@ jobs:
             ## Rules
             - Fix bugs only. Do not change intended behavior, public APIs, or design.
             - Do not refactor, reformat, rename, or update dependencies unless that is the fix itself.
+              Never commit lockfile changes (`package-lock.json`, `bun.lockb`, `uv.lock`, `poetry.lock`,
+              `Cargo.lock`) that installing dependencies produced; revert them before the pull request.
             - Keep the change under 100 lines and run the tests before opening the pull request.
             - Test failures that already exist on the base branch and are unrelated to your change do not
               block the pull request: open it anyway and list them under "Not fixed".
