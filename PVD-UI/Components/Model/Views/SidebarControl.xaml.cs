@@ -6,6 +6,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Windows.Input;
+using PVD_UI.ViewModels;
 
 namespace PVD_UI.Components.Model.Views
 {
@@ -59,6 +61,12 @@ namespace PVD_UI.Components.Model.Views
         // 진행률 텍스트 (예: "85%")
         public string ProgressText => $"{Progress:0}%";
 
+        // Commands
+        public ICommand HomeCommand { get; private set; }
+        public ICommand PlayCommand { get; private set; }
+        public ICommand RestartCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
+
         // 진행률에 따른 StrokeDashArray 계산
         public DoubleCollection ProgressStrokeDashArray
         {
@@ -93,6 +101,13 @@ namespace PVD_UI.Components.Model.Views
         {
             InitializeComponent();
             this.DataContext = this; // DataContext를 자기 자신으로 설정
+
+            HomeCommand = new RelayCommand<object>(_ => { });
+            PlayCommand = new RelayCommand<object>(_ => { });
+            RestartCommand = new RelayCommand<object>(_ => { });
+            StopCommand = new RelayCommand<object>(_ => { });
+
+            this.Unloaded += (s, e) => Cleanup();
 
             // 컬렉션 및 속성 초기화
             Nodes = new ObservableCollection<DiagramNode>();
