@@ -1,6 +1,7 @@
 using PVD_UI.Components.Model.Views; 
 using System.Globalization;
 using System.Windows.Data;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PVD_UI.Converters
@@ -17,10 +18,10 @@ namespace PVD_UI.Converters
                     PlateStatus.Working => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3b82f6")),   // 작업 중: 파란색
                     PlateStatus.Waiting => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#52525b")),   // 대기: 회색
                     PlateStatus.Empty => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3f3f46")),     // 비어있음: 더 어두운 회색
-                    _ => Brushes.Transparent,
+                    _ => DependencyProperty.UnsetValue,
                 };
             }
-            return Brushes.Transparent;
+            return DependencyProperty.UnsetValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
