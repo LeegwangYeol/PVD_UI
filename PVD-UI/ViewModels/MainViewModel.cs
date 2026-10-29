@@ -137,8 +137,7 @@ namespace PVD_UI.ViewModels
         
         private void CreateDiagramNodes()
         {
-            // Clear existing nodes
-            Nodes.Clear();
+            var newNodes = new ObservableCollection<DiagramNode>();
 
             // Create diagram nodes in a circular pattern
             int totalNodes = 50;
@@ -167,7 +166,7 @@ namespace PVD_UI.ViewModels
                 double finalY = nodeCenterY - (nodeHeight / 2);
 
                 // Add the node to the collection
-                Nodes.Add(new DiagramNode
+                newNodes.Add(new DiagramNode
                 {
                     Number = i,
                     X = finalX,
@@ -175,6 +174,7 @@ namespace PVD_UI.ViewModels
                     IsHighlighted = (i == 34 || i == 35 || i == 36)  // Highlight specific nodes
                 });
             }
+            Nodes = newNodes;
         }
     }
 }

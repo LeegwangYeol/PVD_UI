@@ -1,0 +1,17 @@
+What was wrong (file and line):
+- In `PVD-UI/ViewModels/MainViewModel.cs`, line 141 and 170, the `Nodes` collection is mutated directly using `.Clear()` and `.Add()`, but the `Nodes` setter is never called, so `PropertyChanged` is not triggered correctly, and changes aren't properly captured by the UI.
+
+The fix:
+- Modify `CreateDiagramNodes` to create a new `ObservableCollection<DiagramNode>`, populate it with the new nodes, and assign it to the `Nodes` property at the end. This correctly triggers `OnPropertyChanged(nameof(Nodes))` through the property setter.
+
+How it was verified (build/test command and result):
+- WPF code for Windows cannot be built or run on this Linux VM environment, so verification was done by tracing the code path.
+
+Not fixed:
+- None.
+
+Assumptions:
+- It was assumed that mutating the `ObservableCollection` without using the setter was the intended target defect for "`MainViewModel` state transitions and `PropertyChanged` coverage". I also checked the other priorities, but the previous commits already addressed them.
+
+Prompt feedback:
+- None.
