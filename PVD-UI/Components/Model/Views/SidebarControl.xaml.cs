@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -58,6 +59,42 @@ namespace PVD_UI.Components.Model.Views
 
         // 진행률 텍스트 (예: "85%")
         public string ProgressText => $"{Progress:0}%";
+
+        public static readonly DependencyProperty HomeCommandProperty =
+            DependencyProperty.Register(nameof(HomeCommand), typeof(ICommand), typeof(SidebarControl), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty PlayCommandProperty =
+            DependencyProperty.Register(nameof(PlayCommand), typeof(ICommand), typeof(SidebarControl), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty RestartCommandProperty =
+            DependencyProperty.Register(nameof(RestartCommand), typeof(ICommand), typeof(SidebarControl), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty StopCommandProperty =
+            DependencyProperty.Register(nameof(StopCommand), typeof(ICommand), typeof(SidebarControl), new PropertyMetadata(null));
+
+        public ICommand HomeCommand
+        {
+            get => (ICommand)GetValue(HomeCommandProperty);
+            set => SetValue(HomeCommandProperty, value);
+        }
+
+        public ICommand PlayCommand
+        {
+            get => (ICommand)GetValue(PlayCommandProperty);
+            set => SetValue(PlayCommandProperty, value);
+        }
+
+        public ICommand RestartCommand
+        {
+            get => (ICommand)GetValue(RestartCommandProperty);
+            set => SetValue(RestartCommandProperty, value);
+        }
+
+        public ICommand StopCommand
+        {
+            get => (ICommand)GetValue(StopCommandProperty);
+            set => SetValue(StopCommandProperty, value);
+        }
 
         // 진행률에 따른 StrokeDashArray 계산
         public DoubleCollection ProgressStrokeDashArray
