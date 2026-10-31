@@ -101,14 +101,23 @@ namespace PVD_UI.Components.Model.Views
             // 시간 업데이트 타이머 설정
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += Timer_Tick;
-            _timer.Start();
 
             // 진행률 변경 테스트 타이머 (실제 사용시에는 제거하고 외부 데이터와 연동)
             _progressTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _progressTimer.Tick += ProgressTimer_Tick;
-            _progressTimer.Start();
 
             // 이벤트 핸들러 등록
+            this.Loaded += (s, e) =>
+            {
+                _timer.Start();
+                _progressTimer.Start();
+            };
+
+            this.Unloaded += (s, e) =>
+            {
+                _timer.Stop();
+                _progressTimer.Stop();
+            };
         }
         #endregion
 
