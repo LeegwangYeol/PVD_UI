@@ -139,12 +139,8 @@ namespace PVD_UI.Components.Views
                 // 제품 개수 조정 (더 엄격하게 제한)
                 if (_productCount > maxPossibleCount)
                 {
-                    _productCount = maxPossibleCount;
-                    if (_productCount != ProductCount)
-                    {
-                        ProductCount = _productCount;
-                        return; // PropertyChanged 이벤트로 인해 다시 호출됨
-                    }
+                    ProductCount = maxPossibleCount;
+                    return; // PropertyChanged 이벤트로 인해 다시 호출됨
                 }
 
 
