@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using PVD_UI.ViewModels;
 
 namespace PVD_UI.Components.Model.Views
 {
@@ -56,6 +58,12 @@ namespace PVD_UI.Components.Model.Views
             }
         }
 
+        // Commands
+        public ICommand HomeCommand { get; private set; }
+        public ICommand PlayCommand { get; private set; }
+        public ICommand RestartCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
+
         // 진행률 텍스트 (예: "85%")
         public string ProgressText => $"{Progress:0}%";
 
@@ -93,6 +101,12 @@ namespace PVD_UI.Components.Model.Views
         {
             InitializeComponent();
             this.DataContext = this; // DataContext를 자기 자신으로 설정
+
+            // Initialize commands
+            HomeCommand = new RelayCommand<object>(_ => { /* Implement Home logic */ });
+            PlayCommand = new RelayCommand<object>(_ => StartProgressTest());
+            RestartCommand = new RelayCommand<object>(_ => { Progress = 0; StartProgressTest(); });
+            StopCommand = new RelayCommand<object>(_ => StopProgressTest());
 
             // 컬렉션 및 속성 초기화
             Nodes = new ObservableCollection<DiagramNode>();

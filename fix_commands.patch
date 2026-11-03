@@ -1,0 +1,10 @@
+--- a/PVD-UI/Components/Model/Views/SidebarControl.xaml.cs
++++ b/PVD-UI/Components/Model/Views/SidebarControl.xaml.cs
+@@ -4,6 +4,7 @@
+ using System.ComponentModel;
+ using System.Windows;
+ using System.Windows.Controls;
++using System.Windows.Input;
+ using System.Windows.Media;
+ using System.Windows.Threading;
+ using PVD_UI.ViewModels;
