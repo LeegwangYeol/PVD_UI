@@ -101,7 +101,7 @@
         
         <!-- 진행률 원 (동적 바인딩) -->
         <Ellipse Width="120" Height="120" Stroke="#3b82f6" StrokeThickness="8"
-                 StrokeDashArray="{Binding ProgressStrokeDashArray}" 
+                 StrokeDashArray="{Binding ProgressStrokeDashArray, RelativeSource={RelativeSource AncestorType=UserControl}}"
                  StrokeDashCap="Round"
                  RenderTransformOrigin="0.5,0.5">
             <Ellipse.RenderTransform>
@@ -110,7 +110,7 @@
         </Ellipse>
         
         <!-- 진행률 텍스트 (동적 바인딩) -->
-        <TextBlock Text="{Binding ProgressText}" 
+        <TextBlock Text="{Binding ProgressText, RelativeSource={RelativeSource AncestorType=UserControl}}"
                   FontSize="24" 
                   FontWeight="Bold" 
                   HorizontalAlignment="Center" 
