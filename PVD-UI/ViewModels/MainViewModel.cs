@@ -40,6 +40,10 @@ namespace PVD_UI.ViewModels
         private readonly Dictionary<string, FrameworkElement> _views;
         private string _currentViewKey;
         public ICommand NavigateCommand { get; private set; }
+        public ICommand HomeCommand { get; private set; }
+        public ICommand PlayCommand { get; private set; }
+        public ICommand RestartCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
 
         public MainViewModel()
         {
@@ -49,6 +53,10 @@ namespace PVD_UI.ViewModels
             
             // Initialize commands
             NavigateCommand = new RelayCommand<string>(Navigate);
+            HomeCommand = new RelayCommand<object>(_ => { /* TODO: Implement Home logic */ });
+            PlayCommand = new RelayCommand<object>(_ => { /* TODO: Implement Play logic */ });
+            RestartCommand = new RelayCommand<object>(_ => { /* TODO: Implement Restart logic */ });
+            StopCommand = new RelayCommand<object>(_ => { /* TODO: Implement Stop logic */ });
             
             // Initialize views
             InitializeViews();

@@ -92,7 +92,6 @@ namespace PVD_UI.Components.Model.Views
         public SidebarControl()
         {
             InitializeComponent();
-            this.DataContext = this; // DataContext를 자기 자신으로 설정
 
             // 컬렉션 및 속성 초기화
             Nodes = new ObservableCollection<DiagramNode>();
