@@ -39,7 +39,13 @@ namespace PVD_UI.ViewModels
         private ObservableCollection<DiagramNode> _nodes;
         private readonly Dictionary<string, FrameworkElement> _views;
         private string _currentViewKey;
+
         public ICommand NavigateCommand { get; private set; }
+        public ICommand HomeCommand { get; private set; }
+        public ICommand PlayCommand { get; private set; }
+        public ICommand RestartCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
+
 
         public MainViewModel()
         {
@@ -47,8 +53,13 @@ namespace PVD_UI.ViewModels
             _nodes = new ObservableCollection<DiagramNode>();
             _views = new Dictionary<string, FrameworkElement>();
             
-            // Initialize commands
+                        // Initialize commands
             NavigateCommand = new RelayCommand<string>(Navigate);
+            HomeCommand = new RelayCommand<object>(_ => { });
+            PlayCommand = new RelayCommand<object>(_ => { });
+            RestartCommand = new RelayCommand<object>(_ => { });
+            StopCommand = new RelayCommand<object>(_ => { });
+
             
             // Initialize views
             InitializeViews();

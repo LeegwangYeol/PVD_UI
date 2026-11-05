@@ -198,22 +198,22 @@
             <!-- 제어 버튼들 -->
             <UniformGrid  Columns="4" Margin="0,16,0,0" HorizontalAlignment="Stretch" Background="#3f3f46">
                 <Button Style="{StaticResource CustomFlatButton}" 
-                        Command="{Binding HomeCommand}" 
+                        Command="{Binding DataContext.HomeCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
                         ToolTip="원점복귀">
                     <materialDesign:PackIcon Kind="Home" Width="24" Height="24" Foreground="White"/>
                 </Button>
                 <Button Style="{StaticResource CustomFlatButton}" 
-                        Command="{Binding PlayCommand}" 
+                        Command="{Binding DataContext.PlayCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
                         ToolTip="시작">
                     <materialDesign:PackIcon Kind="Play" Width="24" Height="24" Foreground="White"/>
                 </Button>
                 <Button Style="{StaticResource CustomFlatButton}" 
-                        Command="{Binding RestartCommand}" 
+                        Command="{Binding DataContext.RestartCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
                         ToolTip="재시작">
                     <materialDesign:PackIcon Kind="Restart" Width="24" Height="24" Foreground="White"/>
                 </Button>
                 <Button Style="{StaticResource CustomFlatButton}" 
-                        Command="{Binding StopCommand}" 
+                        Command="{Binding DataContext.StopCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
                         ToolTip="정지">
                     <materialDesign:PackIcon Kind="Stop" Width="24" Height="24" Foreground="White"/>
                 </Button>
