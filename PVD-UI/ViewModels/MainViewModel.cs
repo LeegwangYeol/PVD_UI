@@ -39,6 +39,50 @@ namespace PVD_UI.ViewModels
         private ObservableCollection<DiagramNode> _nodes;
         private readonly Dictionary<string, FrameworkElement> _views;
         private string _currentViewKey;
+
+        private double _progress = 85;
+        public double Progress
+        {
+            get => _progress;
+            set
+            {
+                if (_progress != value)
+                {
+                    _progress = value;
+                    OnPropertyChanged(nameof(Progress));
+                    OnPropertyChanged(nameof(ProgressStrokeDashArray));
+                    OnPropertyChanged(nameof(ProgressText));
+                }
+            }
+        }
+
+        public string ProgressText => $"{Progress:0}%";
+
+        public System.Windows.Media.DoubleCollection ProgressStrokeDashArray
+        {
+            get
+            {
+                const double radius = 15;
+                const double strokeThickness = 8;
+                double effectiveRadius = radius - (strokeThickness / 2);
+                double circumference = 2 * Math.PI * effectiveRadius;
+
+                if (Progress <= 0) return new System.Windows.Media.DoubleCollection { 0.01, double.MaxValue };
+                if (Progress >= 100) return new System.Windows.Media.DoubleCollection { circumference, 0 };
+
+                double progressLength = circumference * (Progress / 160.0);
+                progressLength = Math.Max(0.01, progressLength);
+                double gapLength = Math.Max(0.01, circumference - progressLength);
+
+                return new System.Windows.Media.DoubleCollection { progressLength, gapLength };
+            }
+        }
+
+        public ICommand HomeCommand { get; private set; }
+        public ICommand PlayCommand { get; private set; }
+        public ICommand RestartCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
+
         public ICommand NavigateCommand { get; private set; }
 
         public MainViewModel()
@@ -49,6 +93,11 @@ namespace PVD_UI.ViewModels
             
             // Initialize commands
             NavigateCommand = new RelayCommand<string>(Navigate);
+            HomeCommand = new RelayCommand<object>(_ => { });
+            PlayCommand = new RelayCommand<object>(_ => { });
+            RestartCommand = new RelayCommand<object>(_ => { });
+            StopCommand = new RelayCommand<object>(_ => { });
+
             
             // Initialize views
             InitializeViews();
@@ -60,6 +109,11 @@ namespace PVD_UI.ViewModels
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += (s, e) => CurrentTime = DateTime.Now;
             _timer.Start();
+
+            var progressTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            progressTimer.Tick += (s, e) => Progress = (Progress >= 100) ? 0 : Progress + 1;
+            progressTimer.Start();
+
             
             // Initialize nodes
             CreateDiagramNodes();
