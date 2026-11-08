@@ -1,4 +1,5 @@
 using PVD_UI.Components.Model.Views; 
+using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -9,6 +10,8 @@ namespace PVD_UI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null) return Brushes.Transparent;
+
             if (value is PlateStatus status)
             {
                 return status switch
