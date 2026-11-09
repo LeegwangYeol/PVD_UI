@@ -20,7 +20,7 @@ namespace PVD_UI.Converters
                     _ => Brushes.Transparent,
                 };
             }
-            return Brushes.Transparent;
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3f3f46")); // 기본 배경색 (null/unknown 처리)
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
