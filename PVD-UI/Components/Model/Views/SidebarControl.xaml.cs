@@ -35,11 +35,7 @@ namespace PVD_UI.Components.Model.Views
                 }
             }
         }
-
-        // 다이어그램 노드 컬렉션
-        public ObservableCollection<DiagramNode> Nodes { get; set; }
-
-        // 진행률 관련 속성
+// 진행률 관련 속성
         private double _progress = 85; // 기본값 85%
         public double Progress
         {
@@ -92,10 +88,8 @@ namespace PVD_UI.Components.Model.Views
         public SidebarControl()
         {
             InitializeComponent();
-            this.DataContext = this; // DataContext를 자기 자신으로 설정
 
-            // 컬렉션 및 속성 초기화
-            Nodes = new ObservableCollection<DiagramNode>();
+            // 속성 초기화
             CurrentTime = DateTime.Now;
 
             // 시간 업데이트 타이머 설정

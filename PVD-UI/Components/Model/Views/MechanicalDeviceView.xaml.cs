@@ -118,8 +118,7 @@ namespace PVD_UI.Components.Views
         {
             InitializeComponent();
             Elements = new ObservableCollection<MechanicalElement>();
-            this.DataContext = this;
-            UpdateVisualization(); // 초기 상태 렌더링
+                        UpdateVisualization(); // 초기 상태 렌더링
         }
 
         /// <summary>

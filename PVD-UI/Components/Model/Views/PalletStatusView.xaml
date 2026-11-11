@@ -37,7 +37,7 @@
         <!-- 왼쪽: 팔레트 그리드 -->
         <Border Grid.Column="0" Background="#27272a" Padding="10" CornerRadius="8" Margin="0,0,10,0">
             <!-- ItemsControl을 사용하여 'Plates' 컬렉션의 각 항목을 동적으로 화면에 그립니다. -->
-            <ItemsControl ItemsSource="{Binding Plates}">
+            <ItemsControl ItemsSource="{Binding Plates, RelativeSource={RelativeSource AncestorType=UserControl}}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <!-- 14개 열을 가진 UniformGrid를 사용하여 모든 항목을 같은 크기로 배열합니다. -->
@@ -68,7 +68,7 @@
             </Grid.RowDefinitions>
 
             <!-- 정보 테이블 -->
-            <DataGrid ItemsSource="{Binding PalletInfoItems}"
+            <DataGrid ItemsSource="{Binding PalletInfoItems, RelativeSource={RelativeSource AncestorType=UserControl}}"
                       AutoGenerateColumns="False" 
                       CanUserAddRows="False"
                       GridLinesVisibility="Horizontal"
@@ -90,9 +90,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{Binding CtaInfo}" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="{Binding KpInfo}" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Column="2" Text="{Binding ProgressInfo}" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Text="{Binding CtaInfo, RelativeSource={RelativeSource AncestorType=UserControl}}" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding KpInfo, RelativeSource={RelativeSource AncestorType=UserControl}}" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Text="{Binding ProgressInfo, RelativeSource={RelativeSource AncestorType=UserControl}}" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>

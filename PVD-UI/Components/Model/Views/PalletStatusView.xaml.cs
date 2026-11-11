@@ -64,8 +64,7 @@ namespace PVD_UI.Components.Model.Views
 
             // 이 컨트롤의 DataContext를 자기 자신으로 설정합니다.
             // 이렇게 하면 XAML의 {Binding}이 이 파일의 속성들을 직접 찾아 연결합니다.
-            this.DataContext = this;
-        }
+                    }
         #endregion
 
         #region Sample Data Logic (샘플 데이터 생성 로직)
