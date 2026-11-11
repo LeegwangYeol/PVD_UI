@@ -79,7 +79,6 @@ namespace PVD_UI.Components.Views
         public RobotSettingsView()
         {
             InitializeComponent();
-            this.DataContext = this;
-        }
+                    }
     }
 }

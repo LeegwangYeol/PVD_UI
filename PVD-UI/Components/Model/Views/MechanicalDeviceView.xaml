@@ -36,22 +36,22 @@
                 <TextBlock Text="장치 제어" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
 
                 <TextBlock Text="제품 개수 (1-60)" Margin="0,10,0,5"/>
-                <Slider Value="{Binding ProductCount, Mode=TwoWay}" Minimum="1" Maximum="60" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <Slider Value="{Binding ProductCount, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" Minimum="1" Maximum="60" TickFrequency="1" IsSnapToTickEnabled="True"/>
 
                 <TextBlock Text="메인 바 높이" Margin="0,10,0,5"/>
-                <Slider Value="{Binding BarHeight, Mode=TwoWay}" Minimum="20" Maximum="300" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <Slider Value="{Binding BarHeight, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" Minimum="20" Maximum="300" TickFrequency="1" IsSnapToTickEnabled="True"/>
 
                 <TextBlock Text="제품 너비" Margin="0,10,0,5"/>
-                <Slider Value="{Binding ProductWidth, Mode=TwoWay}" Minimum="20" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <Slider Value="{Binding ProductWidth, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" Minimum="20" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
 
                 <TextBlock Text="제품 높이" Margin="0,10,0,5"/>
-                <Slider Value="{Binding ProductHeight, Mode=TwoWay}" Minimum="2" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <Slider Value="{Binding ProductHeight, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" Minimum="2" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True"/>
 
                 <TextBlock Text="스프링 너비" Margin="0,10,0,5"/>
-                <Slider Value="{Binding SpringWidth, Mode=TwoWay}" Minimum="10" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <Slider Value="{Binding SpringWidth, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" Minimum="10" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
                 
                 <TextBlock Text="스프링 높이" Margin="0,10,0,5"/>
-                <Slider Value="{Binding SpringHeight, Mode=TwoWay}" Minimum="10" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
+                <Slider Value="{Binding SpringHeight, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" Minimum="10" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True"/>
             </StackPanel>
         </Border>
 
@@ -61,11 +61,11 @@
             <Border Background="#3f3f46" Width="100" Height="800" CornerRadius="8">
                 <Canvas>
                     <!-- 메인 바 (높이가 동적으로 변경됨) -->
-                    <Rectangle Fill="#a1a1aa" Width="20" Height="{Binding BarRenderHeight}" 
+                    <Rectangle Fill="#a1a1aa" Width="20" Height="{Binding BarRenderHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                Canvas.Bottom="0" Canvas.Left="40"/>
 
                     <!-- 제품 및 스프링 요소들 (동적으로 생성됨) -->
-                    <ItemsControl ItemsSource="{Binding Elements}"
+                    <ItemsControl ItemsSource="{Binding Elements, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                   ItemTemplateSelector="{StaticResource ElementSelector}"
                                   Canvas.Bottom="0" Canvas.Left="0" Width="100">
                         <ItemsControl.ItemsPanel>
