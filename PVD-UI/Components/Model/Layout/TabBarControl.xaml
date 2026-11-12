@@ -58,73 +58,73 @@
 
     <Border Background="#27272a" BorderBrush="#3f3f46" BorderThickness="0,1,0,0">
         <UniformGrid Rows="1" Columns="12">
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="메인">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="메인">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ViewDashboard" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="메인화면"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="작업">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="작업">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="작업설정"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Settings">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Settings">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Tune" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="환경설정"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="History">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="History">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="History" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="작업이력"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="IO">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="IO">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Input" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="입출력"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Model">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Model">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Shape" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="모델설정"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Palette">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Palette">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Palette" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="팔레트관리"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Calibration">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Calibration">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Ruler" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="캘리브레이션"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Consumables">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Consumables">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="PackageVariant" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="소모품점검"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Bar">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Bar">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="VectorLine" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="막대 관리"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="Spring">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="Spring">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="스프링 관리"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding NavigateCommand}" CommandParameter="System">
+            <Button Style="{StaticResource CustomFlatButton}" Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="System">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Cog" Width="16" Height="16" Margin="0,0,4,0"/>
                     <TextBlock Text="시스템설정"/>
